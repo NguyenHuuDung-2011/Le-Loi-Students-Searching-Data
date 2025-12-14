@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tìm học sinh</title>
+  </head>
+  <body>
+    <h2>Tìm học sinh theo tên</h2>
+
+    <form method="post">
+      <input type="text" name="name" placeholder="Nhập tên học sinh" />
+      <button type="submit">Tìm</button>
+    </form>
+
+    <hr />
+
+    {% if results %}
+    <h3>Kết quả:</h3>
+
+    {% for s in results %}
+    <div>
+      <p><strong>Họ tên:</strong> {{ s["Họ tên"] }}</p>
+      <p><strong>Ngày sinh:</strong> {{ s["Ngày sinh"] }}</p>
+      <p><strong>Giới tính:</strong> {{ s["Giới tính"] }}</p>
+      <p><strong>Số CCCD:</strong> {{ s["CCCD"] }}</p>
+      <p><strong>Lớp:</strong> {{ s["Lớp"] }}</p>
+      <p><strong>Khối:</strong> {{ s["Khối"] }}</p>
+
+      <p>
+        <strong>Cha:</strong> {{ s["Thông tin cha hoặc người giám hộ_Họ tên"] }} {{ s["Thông tin cha hoặc người giám hộ_SĐT"] }}
+      </p>
+
+      <p>
+        <strong>Mẹ:</strong> {{ s["Thông tin mẹ hoặc người giám hộ_Họ tên"] }} {{ s["Thông tin mẹ hoặc người giám hộ_SĐT"] }}
+      </p>
+
+      <hr />
+    </div>
+    {% endfor %} {% else %}
+    <p>Không có kết quả.</p>
+    {% endif %}
+  </body>
+</html>
